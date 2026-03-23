@@ -113,6 +113,8 @@ Final comparison artifacts:
 Deployment demo provided through:
 - `app/streamlit_app.py`
 - `notebooks/05_deployment_demo.ipynb`
+- Live app URL: [https://smartphoneml.streamlit.app/](https://smartphoneml.streamlit.app/)
+- Status: deployed and publicly accessible for demonstration
 
 Run locally:
 ```bash
