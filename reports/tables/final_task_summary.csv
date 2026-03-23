@@ -1,0 +1,3 @@
+task,primary_metric,primary_metric_value,secondary_metric,secondary_metric_value
+classification,weighted_f1,0.5846854325684627,accuracy,0.5922233300099701
+regression,rmse,0.6890129910987716,r2,0.9304091183664868
