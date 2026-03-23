@@ -217,15 +217,11 @@ style: |
   - Linear Regression
   - Random Forest Regressor
   - Gradient Boosting Regressor
-- Main metrics:
-  - RMSE (main)
-  - MAE
-  - R2
+- Main metrics: RMSE (main), MAE, R2
 - Tuning method: GridSearchCV
-- Why RMSE:
-  - It penalizes larger prediction errors more strongly
+- RMSE chosen because it penalizes larger errors more strongly
 
-![w:600](../reports/figures/regression/validation_rmse_model_comparison.png)
+![w:520](../reports/figures/regression/validation_rmse_model_comparison.png)
 
 ---
 
@@ -253,12 +249,15 @@ style: |
 - Demonstration:
   - User enters behavior values
   - App returns predicted addiction level and predicted daily screen time
-- Deployment screenshot (input + prediction output):
+- Deployment screenshots (input + prediction output):
 - Run command:
   - `streamlit run app/streamlit_app.py`
 - Status: deployment workflow tested successfully on local machine
 
-![w:620](../reports/figures/deployment/streamlit_demo.png)
+<div class="two-col">
+  <img src="../reports/figures/deployment/streamlit_demo.png" />
+  <img src="../reports/figures/deployment/streamlit_demo1.png" />
+</div>
 
 ---
 
