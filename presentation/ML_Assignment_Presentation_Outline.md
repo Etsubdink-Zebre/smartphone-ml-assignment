@@ -187,13 +187,10 @@ style: |
   - Logistic Regression
   - Random Forest Classifier
   - SVM (RBF)
-- Metrics used:
-  - Accuracy
-  - Weighted F1 (main metric)
-- Why Weighted F1:
-  - It balances precision and recall across multiple classes
+- Metrics used: Accuracy and Weighted F1 (main metric)
+- Weighted F1 chosen because it balances precision and recall across classes
 
-![w:650](../reports/figures/classification/validation_f1_model_comparison.png)
+![w:560](../reports/figures/classification/validation_f1_model_comparison.png)
 
 ---
 
@@ -244,40 +241,32 @@ style: |
 ---
 
 ## Deployment Demo
-- Local deployment demo completed using Streamlit
+- Local deployment completed using Streamlit
 - App file: `app/streamlit_app.py`
-- Demonstration:
-  - User enters behavior values
-  - App returns predicted addiction level and predicted daily screen time
-- Deployment screenshots (input + prediction output):
-- Run command:
-  - `streamlit run app/streamlit_app.py`
-- Status: deployment workflow tested successfully on local machine
-
+- App flow: user enters behavior values, then gets addiction + screen-time predictions
+- Built-in recommendation layer:
+  - Lower-risk: maintain healthy habits
+  - Moderate risk: reduce notifications and set app limits
+  - High-risk (including Severe): use focus/bedtime mode and phone-free blocks
+- Run command: `streamlit run app/streamlit_app.py`
+- Live app URL: [https://smartphoneml.streamlit.app/](https://smartphoneml.streamlit.app/)
 <div class="two-col">
-  <img src="../reports/figures/deployment/streamlit_demo.png" />
-  <img src="../reports/figures/deployment/streamlit_demo1.png" />
+  <img src="../reports/figures/deployment/streamlit_demo.png" style="max-height:180px;" />
+  <img src="../reports/figures/deployment/streamlit_demo1.png" style="max-height:180px;" />
 </div>
 
 ---
 
 ## Conclusion and Future Work
-- Key outcomes:
-  - Completed full ML pipeline for both classification and regression tasks
-  - Classification result is moderate (Accuracy 0.5617, Weighted F1 0.5583)
-  - Regression result is strong (RMSE 0.7008, R2 0.9300)
-- Limitations:
-  - Behavior overlap reduces classification performance
-  - Dataset is not time-series/longitudinal
-- Future improvements:
-  - Add richer features and class balancing methods
-  - Try advanced models and explainability tools
-  - Deploy to free cloud platform for live demo
-  - Monitor drift and retrain periodically with new data
+- Completed a full ML workflow for classification and regression tasks
+- Final results:
+  - Classification: Accuracy **0.5617**, Weighted F1 **0.5583** (moderate)
+  - Regression: RMSE **0.7008**, R2 **0.9300** (strong)
+- Main limitation: behavior overlap makes class separation difficult
+- Future work: richer features, class balancing, explainability, and periodic retraining
 
 ---
 
 <!-- _class: end -->
 ## Thank You  
-## Questions and Answers
 

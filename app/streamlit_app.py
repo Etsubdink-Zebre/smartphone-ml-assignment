@@ -70,6 +70,27 @@ def make_input_df(
     return row
 
 
+def build_recommendation(predicted_addiction_level: str, predicted_screen_time: float) -> str:
+    level = str(predicted_addiction_level).strip().lower()
+
+    high_risk_levels = {"high", "severe", "very high"}
+    medium_risk_levels = {"medium", "moderate"}
+
+    if level in high_risk_levels or predicted_screen_time > 6.0:
+        return (
+            "High-risk usage pattern detected. Reduce non-essential app use, enable focus/bedtime mode, "
+            "and schedule phone-free blocks (for example: study time and before sleep)."
+        )
+    if level in medium_risk_levels or 4.0 <= predicted_screen_time <= 6.0:
+        return (
+            "Moderate usage pattern detected. Set daily app limits, reduce notifications, and keep at least "
+            "one short phone-free period each day."
+        )
+    return (
+        "Lower-risk usage pattern detected. Continue current habits and maintain good sleep and study/work balance."
+    )
+
+
 def main():
     st.set_page_config(page_title="Smartphone ML Demo", layout="centered")
     st.title("Smartphone ML Assignment Demo")
@@ -116,9 +137,12 @@ def main():
     if st.button("Predict"):
         predicted_addiction_level = clf_model.predict(input_df)[0]
         predicted_screen_time = reg_model.predict(input_df)[0]
+        recommendation = build_recommendation(predicted_addiction_level, float(predicted_screen_time))
 
         st.success(f"Predicted Addiction Level: {predicted_addiction_level}")
         st.info(f"Predicted Daily Screen Time: {predicted_screen_time:.2f} hours")
+        st.markdown("### Suggested Action")
+        st.write(recommendation)
 
 
 if __name__ == "__main__":

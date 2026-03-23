@@ -127,6 +127,14 @@ Proposed monitoring plan:
 - monitor latency and input drift
 - retrain periodically or when metric thresholds degrade
 
+### 9.1 User-Level Suggestions from Predictions
+To make the model output actionable, the deployment layer provides simple recommendations based on predicted addiction level and predicted daily screen time:
+- **Low risk / lower screen time:** maintain current digital habits and healthy sleep routine.
+- **Medium risk / moderate screen time:** reduce non-essential notifications, set app limits, and schedule short phone-free periods.
+- **High risk / high screen time:** apply stricter usage controls (focus mode, bedtime mode), reduce late-night use, and follow a structured daily screen-time plan.
+
+This recommendation layer is rule-based and transparent, so users can easily understand why a specific suggestion is shown.
+
 ## 10. Conclusion
 Key findings:
 - Best classification model (current pipeline): Random Forest classifier with tuned hyperparameters, achieving weighted F1 of `0.5583`.
