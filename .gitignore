@@ -6,3 +6,6 @@ __pycache__/
 
 # Generated at train time; do not deploy stale pickles across machines.
 models/**/*.pkl
+
+# Local presentation sample (upload manually in Streamlit demo).
+data/sample/

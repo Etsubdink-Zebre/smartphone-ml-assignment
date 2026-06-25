@@ -240,16 +240,17 @@ style: |
 
 ---
 
-## Deployment Demo
-- Local deployment completed using Streamlit
-- App file: `app/streamlit_app.py`
-- App flow: user enters behavior values, then gets addiction + screen-time predictions
-- Built-in recommendation layer:
-  - Lower-risk: maintain healthy habits
-  - Moderate risk: reduce notifications and set app limits
-  - High-risk (including Severe): use focus/bedtime mode and phone-free blocks
-- Run command: `streamlit run app/streamlit_app.py`
-- Live app URL: [https://smartphoneml.streamlit.app/](https://smartphoneml.streamlit.app/)
+## Deployment Demo (Live)
+- **Live URL:** [https://smartphoneml.streamlit.app/](https://smartphoneml.streamlit.app/)
+- **App file:** `app/streamlit_app.py`
+- **Mode 1 — Bundled dataset:** models train automatically from the 7,500-row CSV on startup
+- **Mode 2 — Custom CSV:** upload your training file, click **Train Models**, then predict
+- **Fixed report metrics shown:** Accuracy 0.5617 · F1 0.5583 · MAE 0.5937 · R² 0.9300
+- **Outputs:** predicted `addiction_level`, predicted `daily_screen_time_hours`, rule-based advice
+- **Recommendation rules:**
+  - **Mild** → maintain healthy habits
+  - **Moderate** → app limits + fewer notifications
+  - **Severe** → focus/bedtime mode + phone-free blocks
 <div class="two-col">
   <img src="../reports/figures/deployment/streamlit_demo.png" style="max-height:180px;" />
   <img src="../reports/figures/deployment/streamlit_demo1.png" style="max-height:180px;" />

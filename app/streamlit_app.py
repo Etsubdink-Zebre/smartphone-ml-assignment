@@ -8,8 +8,43 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+APP_DIR = Path(__file__).resolve().parent
+if str(APP_DIR) not in sys.path:
+    sys.path.insert(0, str(APP_DIR))
+
 from src.config import RAW_DATA_PATH
 from src.ui_modeling import train_models_from_uploaded_csv
+from assignment_metrics import REPORT_METRICS
+
+
+def render_report_metrics() -> None:
+    """Show fixed metrics that match the written assignment report."""
+    st.subheader("Model Performance (Report Metrics)")
+    st.caption(
+        "Fixed hold-out test results from the tuned training pipeline (`run_pipeline.py`). "
+        "These match the values in `reports/ML_Assignment_Report.md`."
+    )
+    clf = REPORT_METRICS["classification"]
+    reg = REPORT_METRICS["regression"]
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown(f"**Classification** — {clf['model']}")
+        st.markdown(f"Target: `{clf['target']}`")
+        m1, m2 = st.columns(2)
+        m1.metric("Accuracy", f"{clf['accuracy']:.2%}")
+        m2.metric("Weighted F1", f"{clf['f1_weighted']:.4f}")
+        st.caption(
+            f"Precision (weighted): {clf['precision_weighted']:.4f} · "
+            f"Recall (weighted): {clf['recall_weighted']:.4f}"
+        )
+    with col2:
+        st.markdown(f"**Regression** — {reg['model']}")
+        st.markdown(f"Target: `{reg['target']}`")
+        m1, m2, m3 = st.columns(3)
+        m1.metric("MAE", f"{reg['mae']:.4f} h")
+        m2.metric("RMSE", f"{reg['rmse']:.4f} h")
+        m3.metric("R²", f"{reg['r2']:.4f}")
 
 
 INPUT_COLUMNS = [
@@ -169,6 +204,7 @@ def main():
             st.error("Bundled dataset training failed. Check that target columns are present in the CSV.")
             return
         st.success("Models ready (trained from bundled dataset).")
+        render_report_metrics()
     else:
         st.subheader("Upload Training CSV")
         st.caption(
