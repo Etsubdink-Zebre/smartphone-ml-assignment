@@ -59,8 +59,17 @@ streamlit run app/streamlit_app.py
 
 ### 4) Export presentation to PPTX from Marp markdown
 
-```powershell
-marp presentation/ML_Assignment_Presentation_Outline.md --pptx --allow-local-files --output presentation/ML_Assignment_Presentation.pptx
+Requires [Node.js](https://nodejs.org/) (for `npx`). No global Marp install needed.
+
+```bash
+npx --yes @marp-team/marp-cli --no-stdin presentation/ML_Assignment_Presentation_Outline.md --pptx --allow-local-files -o presentation/ML_Assignment_Presentation.pptx
+```
+
+Optional: install Marp globally, then use the same flags:
+
+```bash
+npm install -g @marp-team/marp-cli
+marp --no-stdin presentation/ML_Assignment_Presentation_Outline.md --pptx --allow-local-files -o presentation/ML_Assignment_Presentation.pptx
 ```
 
 ## Notebook Order
