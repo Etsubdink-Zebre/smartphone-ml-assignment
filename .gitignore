@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+
+# Generated at train time; do not deploy stale pickles across machines.
+models/**/*.pkl
